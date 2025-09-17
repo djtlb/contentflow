@@ -180,7 +180,7 @@ class AIOrchestrator {
   /**
    * Google Gemini integration (placeholder for enterprise expansion)
    */
-  async generateWithGemini(prompt, options) {
+  async generateWithGemini(_prompt, _options) {
     // Implementation for Google Gemini API
     throw new Error('Gemini integration coming soon in enterprise version')
   }
