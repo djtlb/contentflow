@@ -10,6 +10,22 @@ import authMiddleware from './middleware/auth.js'
 // Load environment variables
 dotenv.config({ path: '../.env.local' })
 
+// Environment validation
+const requiredEnvVars = {
+  'VITE_SUPABASE_URL': process.env.VITE_SUPABASE_URL,
+  'SUPABASE_SERVICE_ROLE_KEY': process.env.SUPABASE_SERVICE_ROLE_KEY,
+  'OPENAI_API_KEY': process.env.OPENAI_API_KEY
+}
+
+const missingEnvVars = Object.entries(requiredEnvVars)
+  .filter(([key, value]) => !value || value.includes('your-') || value.includes('${'))
+  .map(([key]) => key)
+
+if (missingEnvVars.length > 0 && process.env.NODE_ENV === 'production') {
+  console.error('❌ Missing or invalid environment variables:', missingEnvVars.join(', '))
+  console.error('Please configure these environment variables in your Vercel dashboard')
+}
+
 const app = express()
 const PORT = process.env.PORT || 3001
 
@@ -20,8 +36,32 @@ export const supabase = createClient(
 )
 
 // Middleware
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'http://localhost:5174',
+  process.env.FRONTEND_URL,
+  ...(process.env.VERCEL_URL ? [`https://${process.env.VERCEL_URL}`] : []),
+  ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : [])
+].filter(Boolean)
+
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000'],
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true)
+    
+    // Allow any vercel.app domain in production
+    if (process.env.NODE_ENV === 'production' && origin.includes('.vercel.app')) {
+      return callback(null, true)
+    }
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      console.warn(`CORS: Origin ${origin} not allowed`)
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
   credentials: true
 }))
 app.use(express.json({ limit: '10mb' }))
