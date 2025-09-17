@@ -41,6 +41,7 @@ This guide will help you deploy ContentFlow to production and start generating r
    VITE_SUPABASE_URL=https://your-project.supabase.co
    VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
    VITE_STRIPE_PUBLISHABLE_KEY=pk_live_...
+   VITE_API_BASE_URL=https://your-api-domain.vercel.app
    ```
 
 3. **Configure Domain** (Optional)

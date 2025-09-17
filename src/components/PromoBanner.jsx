@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { supabase } from '../App'
+import { API_ENDPOINTS } from '../config/api'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { X, Megaphone, Gift, Zap, AlertTriangle } from 'lucide-react'
@@ -18,7 +19,7 @@ const PromoBanner = () => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      const response = await fetch('http://localhost:3001/api/admin/promos', {
+      const response = await fetch(API_ENDPOINTS.ADMIN_PROMOS, {
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json'
@@ -48,7 +49,7 @@ const PromoBanner = () => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      await fetch(`http://localhost:3001/api/admin/promos/${promoId}/view`, {
+      await fetch(`${API_ENDPOINTS.ADMIN_PROMO_VIEW}/${promoId}/view`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
@@ -65,7 +66,7 @@ const PromoBanner = () => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      await fetch(`http://localhost:3001/api/admin/promos/${promoId}/click`, {
+      await fetch(`${API_ENDPOINTS.ADMIN_PROMO_CLICK}/${promoId}/click`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${session.access_token}`,

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { supabase } from '../App'
+import { API_ENDPOINTS } from '../config/api'
 import Layout from './Layout'
 import PromoBanner from './PromoBanner'
 import { Button } from '@/components/ui/button'
@@ -43,7 +44,7 @@ const Dashboard = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      const response = await fetch('http://localhost:3001/api/content/history', {
+      const response = await fetch(API_ENDPOINTS.CONTENT_HISTORY, {
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json'
@@ -64,7 +65,7 @@ const Dashboard = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      const response = await fetch('http://localhost:3001/api/content/usage/stats', {
+      const response = await fetch(API_ENDPOINTS.CONTENT_USAGE_STATS, {
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json'
@@ -93,7 +94,7 @@ const Dashboard = ({ user }) => {
       }
 
       // Call our backend API to process the content
-      const response = await fetch('http://localhost:3001/api/content/process', {
+      const response = await fetch(API_ENDPOINTS.CONTENT_PROCESS, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

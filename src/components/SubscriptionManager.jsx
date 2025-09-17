@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { supabase } from '../App'
+import { API_ENDPOINTS } from '../config/api'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -31,7 +32,7 @@ const SubscriptionManager = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      const response = await fetch('http://localhost:3001/api/payments/subscription', {
+      const response = await fetch(API_ENDPOINTS.PAYMENTS_SUBSCRIPTION, {
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json'
@@ -55,7 +56,7 @@ const SubscriptionManager = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      const response = await fetch('http://localhost:3001/api/payments/plans', {
+      const response = await fetch(`${API_ENDPOINTS.PAYMENTS_SUBSCRIPTION}/plans`, {
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json'
@@ -79,7 +80,7 @@ const SubscriptionManager = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) throw new Error('No active session')
 
-      const response = await fetch('http://localhost:3001/api/payments/create-checkout-session', {
+      const response = await fetch(API_ENDPOINTS.PAYMENTS_CHECKOUT, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
@@ -109,7 +110,7 @@ const SubscriptionManager = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) throw new Error('No active session')
 
-      const response = await fetch('http://localhost:3001/api/payments/create-portal-session', {
+      const response = await fetch(API_ENDPOINTS.PAYMENTS_PORTAL, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${session.access_token}`,

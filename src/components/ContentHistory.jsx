@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { supabase } from '../App'
+import { API_ENDPOINTS } from '../config/api'
 import Layout from './Layout'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -42,7 +43,7 @@ const ContentHistory = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      const response = await fetch('http://localhost:3001/api/content/history?limit=50', {
+      const response = await fetch(`${API_ENDPOINTS.CONTENT_HISTORY}?limit=50`, {
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json'
@@ -65,7 +66,7 @@ const ContentHistory = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      const response = await fetch(`http://localhost:3001/api/content/${contentId}`, {
+      const response = await fetch(`${API_ENDPOINTS.CONTENT_DETAIL}/${contentId}`, {
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json'
