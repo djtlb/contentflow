@@ -98,6 +98,8 @@ Transform any content into optimized formats across 15+ platforms using our neur
 
 ## 📦 Deployment
 
+> **✅ DEPLOYMENT ISSUES FIXED**: See [VERCEL_DEPLOYMENT_FIX.md](./VERCEL_DEPLOYMENT_FIX.md) for solutions to common deployment problems.
+
 ### One-Click Deploy
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/djtlb/contentflow)
 
@@ -105,18 +107,19 @@ Transform any content into optimized formats across 15+ platforms using our neur
 
 1. **Frontend Deployment**
    - Connect GitHub repository to Vercel
-   - Framework: React (Vite)
-   - Build command: `pnpm run build`
+   - Framework: React (Vite) - auto-detected
+   - Build command: `pnpm build`
    - Output directory: `dist`
 
 2. **API Deployment**
    - Create separate Vercel project for `/api` folder
-   - Framework: Node.js
+   - Framework: Node.js - auto-detected
    - Build command: `npm install`
 
 3. **Environment Variables**
    - Add all environment variables to Vercel dashboard
    - Configure production URLs
+   - See [VERCEL_DEPLOYMENT_FIX.md](./VERCEL_DEPLOYMENT_FIX.md) for required variables
 
 ### Custom Domain
 - Purchase domain (recommended: `.ai`, `.co`, or `.io`)
