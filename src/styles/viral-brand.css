@@ -1,0 +1,427 @@
+/**
+ * VIRAL BRAND IDENTITY SYSTEM
+ * $10 Billion Platform Aesthetic - Cutting Edge Design
+ */
+
+/* ===== VIRAL COLOR PALETTE ===== */
+:root {
+  /* Primary Brand Colors - Electric & Bold */
+  --viral-electric-blue: #00D4FF;
+  --viral-neon-purple: #8B5CF6;
+  --viral-cyber-green: #00FF88;
+  --viral-plasma-pink: #FF0080;
+  --viral-quantum-orange: #FF6B00;
+  
+  /* Gradient Combinations */
+  --viral-gradient-primary: linear-gradient(135deg, #00D4FF 0%, #8B5CF6 100%);
+  --viral-gradient-secondary: linear-gradient(135deg, #FF0080 0%, #FF6B00 100%);
+  --viral-gradient-success: linear-gradient(135deg, #00FF88 0%, #00D4FF 100%);
+  --viral-gradient-danger: linear-gradient(135deg, #FF0080 0%, #FF6B00 100%);
+  
+  /* Neural Network Inspired */
+  --viral-neural-bg: linear-gradient(45deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  --viral-matrix-green: #00ff41;
+  --viral-hologram-blue: #00ffff;
+  
+  /* Glass Morphism */
+  --viral-glass-bg: rgba(255, 255, 255, 0.1);
+  --viral-glass-border: rgba(255, 255, 255, 0.2);
+  --viral-glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  
+  /* Dark Mode Supremacy */
+  --viral-dark-bg: #0a0a0a;
+  --viral-dark-surface: #1a1a1a;
+  --viral-dark-elevated: #2a2a2a;
+  --viral-dark-text: #ffffff;
+  --viral-dark-text-secondary: #a0a0a0;
+  
+  /* Animation Variables */
+  --viral-glow-intensity: 0 0 20px;
+  --viral-pulse-duration: 2s;
+  --viral-float-duration: 3s;
+}
+
+/* ===== VIRAL TYPOGRAPHY ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+.viral-font-primary {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-optical-sizing: auto;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+.viral-font-display {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.viral-font-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-feature-settings: 'liga' 1, 'calt' 1;
+}
+
+/* ===== VIRAL ANIMATIONS ===== */
+@keyframes viralPulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: var(--viral-glow-intensity) var(--viral-electric-blue);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: var(--viral-glow-intensity) var(--viral-neon-purple);
+  }
+}
+
+@keyframes viralFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes viralGlow {
+  0%, 100% { 
+    box-shadow: 0 0 5px var(--viral-electric-blue);
+  }
+  50% { 
+    box-shadow: 0 0 20px var(--viral-electric-blue), 0 0 30px var(--viral-neon-purple);
+  }
+}
+
+@keyframes viralSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes viralMatrixRain {
+  0% { transform: translateY(-100vh); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes viralHologram {
+  0%, 100% { 
+    opacity: 1;
+    filter: hue-rotate(0deg);
+  }
+  25% { 
+    opacity: 0.8;
+    filter: hue-rotate(90deg);
+  }
+  50% { 
+    opacity: 0.9;
+    filter: hue-rotate(180deg);
+  }
+  75% { 
+    opacity: 0.7;
+    filter: hue-rotate(270deg);
+  }
+}
+
+/* ===== VIRAL COMPONENTS ===== */
+.viral-button {
+  position: relative;
+  background: var(--viral-gradient-primary);
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.viral-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.viral-button:hover::before {
+  left: 100%;
+}
+
+.viral-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+}
+
+.viral-button-danger {
+  background: var(--viral-gradient-danger);
+}
+
+.viral-button-success {
+  background: var(--viral-gradient-success);
+}
+
+.viral-card {
+  background: var(--viral-glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--viral-glass-border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--viral-glass-shadow);
+  transition: all 0.3s ease;
+}
+
+.viral-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+}
+
+.viral-card-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.viral-card-glow::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--viral-gradient-primary);
+  border-radius: 18px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.viral-card-glow:hover::before {
+  opacity: 1;
+}
+
+.viral-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: white;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.viral-input:focus {
+  outline: none;
+  border-color: var(--viral-electric-blue);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.viral-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.viral-badge-primary {
+  background: var(--viral-gradient-primary);
+  color: white;
+}
+
+.viral-badge-success {
+  background: var(--viral-gradient-success);
+  color: white;
+}
+
+.viral-badge-danger {
+  background: var(--viral-gradient-danger);
+  color: white;
+}
+
+/* ===== VIRAL EFFECTS ===== */
+.viral-glow {
+  animation: viralGlow var(--viral-pulse-duration) ease-in-out infinite;
+}
+
+.viral-pulse {
+  animation: viralPulse var(--viral-pulse-duration) ease-in-out infinite;
+}
+
+.viral-float {
+  animation: viralFloat var(--viral-float-duration) ease-in-out infinite;
+}
+
+.viral-slide-in {
+  animation: viralSlideIn 0.6s ease-out;
+}
+
+.viral-hologram {
+  animation: viralHologram 4s ease-in-out infinite;
+}
+
+/* ===== VIRAL BACKGROUNDS ===== */
+.viral-bg-neural {
+  background: var(--viral-neural-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.viral-bg-neural::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%);
+  animation: viralHologram 8s ease-in-out infinite;
+}
+
+.viral-matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.viral-matrix-char {
+  position: absolute;
+  color: var(--viral-matrix-green);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  animation: viralMatrixRain 3s linear infinite;
+  opacity: 0.7;
+}
+
+/* ===== VIRAL GRID SYSTEM ===== */
+.viral-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.viral-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.viral-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.viral-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 768px) {
+  .viral-grid-2,
+  .viral-grid-3,
+  .viral-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== VIRAL UTILITIES ===== */
+.viral-text-gradient {
+  background: var(--viral-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.viral-text-glow {
+  text-shadow: 0 0 10px var(--viral-electric-blue);
+}
+
+.viral-border-glow {
+  border: 1px solid transparent;
+  background: linear-gradient(var(--viral-dark-surface), var(--viral-dark-surface)) padding-box,
+              var(--viral-gradient-primary) border-box;
+}
+
+.viral-shadow-xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 212, 255, 0.25);
+}
+
+.viral-backdrop-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ===== VIRAL RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .viral-card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  
+  .viral-button {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
+
+/* ===== VIRAL DARK MODE OVERRIDES ===== */
+.dark {
+  --background: var(--viral-dark-bg);
+  --foreground: var(--viral-dark-text);
+  --card: var(--viral-dark-surface);
+  --card-foreground: var(--viral-dark-text);
+  --popover: var(--viral-dark-elevated);
+  --popover-foreground: var(--viral-dark-text);
+  --primary: var(--viral-electric-blue);
+  --primary-foreground: var(--viral-dark-bg);
+  --secondary: var(--viral-dark-elevated);
+  --secondary-foreground: var(--viral-dark-text);
+  --muted: var(--viral-dark-elevated);
+  --muted-foreground: var(--viral-dark-text-secondary);
+  --accent: var(--viral-neon-purple);
+  --accent-foreground: var(--viral-dark-text);
+  --destructive: var(--viral-plasma-pink);
+  --destructive-foreground: var(--viral-dark-text);
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.05);
+  --ring: var(--viral-electric-blue);
+}
+
+/* ===== VIRAL SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--viral-dark-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--viral-gradient-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--viral-gradient-secondary);
+}
+
+/* ===== VIRAL SELECTION ===== */
+::selection {
+  background: var(--viral-electric-blue);
+  color: var(--viral-dark-bg);
+}
+
+::-moz-selection {
+  background: var(--viral-electric-blue);
+  color: var(--viral-dark-bg);
+}

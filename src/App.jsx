@@ -2,13 +2,15 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { createClient } from '@supabase/supabase-js'
 import './App.css'
+import './styles/viral-brand.css'
 
 // Components
-import LandingPage from './components/LandingPage'
+import ProfessionalLanding from './components/ProfessionalLanding'
 import AuthPage from './components/AuthPage'
 import Dashboard from './components/Dashboard'
 import SettingsPage from './components/SettingsPage'
 import ContentHistory from './components/ContentHistory'
+import ViralAdminDashboard from './components/ViralAdminDashboard'
 import LoadingSpinner from './components/LoadingSpinner'
 
 // Initialize Supabase client
@@ -48,7 +50,7 @@ function App() {
         <Routes>
           <Route 
             path="/" 
-            element={user ? <Navigate to="/dashboard" /> : <LandingPage />} 
+            element={user ? <Navigate to="/dashboard" /> : <ProfessionalLanding />} 
           />
           <Route 
             path="/auth" 
@@ -65,6 +67,10 @@ function App() {
           <Route 
             path="/history" 
             element={user ? <ContentHistory user={user} /> : <Navigate to="/auth" />} 
+          />
+          <Route 
+            path="/admin" 
+            element={user ? <ViralAdminDashboard user={user} /> : <Navigate to="/auth" />} 
           />
         </Routes>
       </div>

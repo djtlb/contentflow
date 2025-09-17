@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import { createClient } from '@supabase/supabase-js'
 import contentRoutes from './routes/content.js'
 import paymentRoutes from './routes/payments.js'
+import adminRoutes from './routes/admin.js'
 import authMiddleware from './middleware/auth.js'
 
 // Load environment variables
@@ -32,6 +33,9 @@ app.use('/api/content', authMiddleware, contentRoutes)
 // Payment routes (webhook route doesn't need auth)
 app.use('/api/payments/webhook', paymentRoutes)
 app.use('/api/payments', authMiddleware, paymentRoutes)
+
+// Admin routes (requires auth + admin check)
+app.use('/api/admin', authMiddleware, adminRoutes)
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

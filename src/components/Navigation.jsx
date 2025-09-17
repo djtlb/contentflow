@@ -14,11 +14,16 @@ import {
 const Navigation = ({ user, onSignOut }) => {
   const location = useLocation()
 
+  // Check if user is admin (hidden from UI)
+  const isAdmin = user && ['admin@contentflow.com', 'sallykamari61@gmail.com'].includes(user.email)
+
   const navItems = [
     { path: '/dashboard', label: 'Dashboard', icon: Home },
     { path: '/history', label: 'History', icon: History },
     { path: '/settings', label: 'Settings', icon: Settings },
   ]
+
+  // Admin access available via direct URL /admin (hidden from navigation)
 
   const isActive = (path) => location.pathname === path
 

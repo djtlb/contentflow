@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { supabase } from '../App'
 import Layout from './Layout'
+import PromoBanner from './PromoBanner'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -169,6 +171,8 @@ const Dashboard = ({ user }) => {
   return (
     <Layout user={user}>
       <div className="space-y-8">
+        {/* Promotional Banners */}
+        <PromoBanner />
         {/* Welcome Section */}
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold">Welcome back!</h1>
