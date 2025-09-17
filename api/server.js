@@ -47,6 +47,11 @@ app.use('/api/payments', authMiddleware, paymentRoutes);
 app.use('/api/enhanced-payments/webhook', enhancedPaymentRoutes);
 app.use('/api/enhanced-payments', authMiddleware, enhancedPaymentRoutes);
 
+// Tax-enabled payment routes with automatic tax calculation
+const taxEnabledPaymentRoutes = require('./routes/taxEnabledPayments');
+app.use('/api/tax-enabled-payments/webhook-with-tax', taxEnabledPaymentRoutes);
+app.use('/api/tax-enabled-payments', authMiddleware, taxEnabledPaymentRoutes);
+
 // Admin routes (requires auth + admin check)
 app.use('/api/admin', authMiddleware, adminRoutes);
 
