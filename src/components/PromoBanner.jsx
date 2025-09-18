@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { supabase } from '../App'
+import { apiUrl } from '../lib/config'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { X, Megaphone, Gift, Zap, AlertTriangle } from 'lucide-react'
@@ -18,7 +19,7 @@ const PromoBanner = () => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      const response = await fetch('http://localhost:3001/api/admin/promos', {
+      const response = await fetch(apiUrl('/api/admin/promos'), {
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json'

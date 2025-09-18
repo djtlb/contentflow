@@ -14,7 +14,7 @@ const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || 'demo-servic
 let supabase = null
 try {
   supabase = createClient(supabaseUrl, supabaseServiceKey)
-} catch (error) {
+} catch (_error) {
   console.log('Supabase client initialization failed (demo mode)')
 }
 
@@ -34,7 +34,7 @@ const adminMiddleware = async (req, res, next) => {
     }
     
     next()
-  } catch (error) {
+  } catch (_error) {
     res.status(500).json({ error: 'Admin verification failed' })
   }
 }
@@ -51,7 +51,7 @@ router.get('/analytics', async (req, res) => {
     }
 
     // Get total users count
-    const { count: totalUsers } = await supabase
+    const { count: _totalUsers } = await supabase
       .from('content_submissions')
       .select('user_id', { count: 'exact', head: true })
 

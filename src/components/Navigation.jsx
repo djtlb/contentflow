@@ -15,7 +15,7 @@ const Navigation = ({ user, onSignOut }) => {
   const location = useLocation()
 
   // Check if user is admin (hidden from UI)
-  const isAdmin = user && ['admin@contentflow.com', 'sallykamari61@gmail.com'].includes(user.email)
+  const _isAdmin = user && ['admin@contentflow.com', 'sallykamari61@gmail.com'].includes(user.email)
 
   const navItems = [
     { path: '/dashboard', label: 'Dashboard', icon: Home },

@@ -21,7 +21,7 @@ router.post('/process', async (req, res) => {
     // Validate URL format
     try {
       new URL(url)
-    } catch (error) {
+    } catch (_error) {
       return res.status(400).json({ error: 'Invalid URL format' })
     }
 

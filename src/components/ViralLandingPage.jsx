@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -257,7 +257,9 @@ const ViralLandingPage = () => {
             <div className="viral-card viral-card-glow p-8">
               <div className="aspect-video bg-gradient-to-br from-viral-electric-blue/20 to-viral-neon-purple/20 rounded-lg flex items-center justify-center">
                 <div className="text-center">
-                  <features[activeFeature].icon className="h-24 w-24 mx-auto mb-4 text-viral-electric-blue viral-pulse" />
+                  {React.createElement(features[activeFeature].icon, { 
+                    className: "h-24 w-24 mx-auto mb-4 text-viral-electric-blue viral-pulse" 
+                  })}
                   <h3 className="viral-font-display viral-text-gradient text-2xl mb-4">
                     {features[activeFeature].title}
                   </h3>
