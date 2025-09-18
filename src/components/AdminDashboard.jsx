@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { supabase } from '../App'
+import { API_ENDPOINTS } from '../config/api'
 import Layout from './Layout'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -65,7 +66,7 @@ const AdminDashboard = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      const response = await fetch('http://localhost:3001/api/admin/analytics', {
+      const response = await fetch(API_ENDPOINTS.ADMIN_ANALYTICS, {
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json'
@@ -89,7 +90,7 @@ const AdminDashboard = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      const response = await fetch('http://localhost:3001/api/admin/promos', {
+      const response = await fetch(API_ENDPOINTS.ADMIN_PROMOS, {
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json'
@@ -114,7 +115,7 @@ const AdminDashboard = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) throw new Error('No active session')
 
-      const response = await fetch('http://localhost:3001/api/admin/promos', {
+      const response = await fetch(API_ENDPOINTS.ADMIN_PROMOS, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
@@ -151,7 +152,7 @@ const AdminDashboard = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      const response = await fetch(`http://localhost:3001/api/admin/promos/${promoId}`, {
+      const response = await fetch(`${API_ENDPOINTS.ADMIN_PROMOS}/${promoId}`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${session.access_token}`,

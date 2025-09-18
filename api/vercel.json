@@ -20,6 +20,7 @@
     "STRIPE_WEBHOOK_SECRET": "@stripe_webhook_secret",
     "STRIPE_CREATOR_PRICE_ID": "@stripe_creator_price_id",
     "STRIPE_PRO_PRICE_ID": "@stripe_pro_price_id",
-    "FRONTEND_URL": "@frontend_url"
+    "FRONTEND_URL": "@frontend_url",
+    "NODE_ENV": "production"
   }
 }
