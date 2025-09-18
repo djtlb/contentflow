@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { supabase } from '../App'
+import { apiUrl } from '../lib/config'
 import Layout from './Layout'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -65,7 +66,7 @@ const AdminDashboard = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      const response = await fetch('http://localhost:3001/api/admin/analytics', {
+      const response = await fetch(apiUrl('/api/admin/analytics'), {
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json'
@@ -89,7 +90,7 @@ const AdminDashboard = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
-      const response = await fetch('http://localhost:3001/api/admin/promos', {
+      const response = await fetch(apiUrl('/api/admin/promos'), {
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json'
@@ -114,7 +115,7 @@ const AdminDashboard = ({ user }) => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) throw new Error('No active session')
 
-      const response = await fetch('http://localhost:3001/api/admin/promos', {
+      const response = await fetch(apiUrl('/api/admin/promos'), {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${session.access_token}`,
